@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Scholar {
+  id                 Int    @id @default(autoincrement())
+  ronin_address      String
+  scholar_name       String
+  manager_percentage Int
+}
