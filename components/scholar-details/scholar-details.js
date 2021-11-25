@@ -1,5 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 
+import utils from "../../lib/utils";
+
 export default function ScholarDetails({ scholar, scholarData }) {
   const router = useRouter();
 
@@ -27,11 +29,16 @@ export default function ScholarDetails({ scholar, scholarData }) {
 
       <p>{scholarData.mmr}</p>
       <p>
-        {scholarData.total_slp * (scholar.manager_percentage / 100).toFixed(2)}
+        {utils.toFixedIfNecessary(
+          scholarData.total_slp * (scholar.manager_percentage / 100),
+          2
+        )}
       </p>
       <p>
-        {scholarData.total_slp *
-          ((100 - scholar.manager_percentage) / 100).toFixed(2)}
+        {utils.toFixedIfNecessary(
+          scholarData.total_slp * ((100 - scholar.manager_percentage) / 100),
+          2
+        )}
       </p>
       <p>{scholarData.total_slp}</p>
       <div className="absolute right-0">
