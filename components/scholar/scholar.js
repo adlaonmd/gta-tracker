@@ -31,7 +31,7 @@ export default function Scholar({ initialScholars }) {
     }
 
     fetchScholarData();
-  }, []);
+  }, [getAllRoninAddress, getManagerSLP, getScholarSLP, scholarsRonin]);
 
   let scholarsRonin = null;
   function getAllRoninAddress() {
@@ -99,14 +99,14 @@ export default function Scholar({ initialScholars }) {
           </div>
         </div>
         <div id="manager-percentage" className={styles.card}>
-          <p className="text-md">Manager's SLP</p>
+          <p className="text-md">Manager&apos;s SLP</p>
           <div className="flex justify-between px-4 items-center">
             <div className="font-bold text-4xl">{managerSLP}</div>
             <div className="text-4xl">💼</div>
           </div>
         </div>
         <div id="scholar-percentage" className={styles.card}>
-          <p className="text-md">Scholars' SLP</p>
+          <p className="text-md">Scholars&apos; SLP</p>
           <div className="flex justify-between px-4 items-center">
             <div className="font-bold text-4xl">{scholarSLP}</div>
             <div className="text-4xl">🎓</div>
@@ -131,8 +131,8 @@ export default function Scholar({ initialScholars }) {
           <div id="header" className="grid grid-cols-5 py-4">
             <p className="font-bold text-purple-600">Name</p>
             <p className="font-bold text-purple-600">MMR</p>
-            <p className="font-bold text-purple-600">Manager's %</p>
-            <p className="font-bold text-purple-600">Scholar's %</p>
+            <p className="font-bold text-purple-600">Manager&apos;s %</p>
+            <p className="font-bold text-purple-600">Scholar&apos;s %</p>
             <p className="font-bold text-purple-600">Total</p>
           </div>
           {scholars.map((scholar, key) => {
