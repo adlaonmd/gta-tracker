@@ -14,6 +14,8 @@ export default function Scholar({ initialScholars }) {
   const [managerSLP, setManagerSLP] = useState(0);
   const [scholarSLP, setScholarSLP] = useState(0);
 
+  let scholarsRonin = null;
+
   useEffect(() => {
     getAllRoninAddress();
 
@@ -33,7 +35,6 @@ export default function Scholar({ initialScholars }) {
     fetchScholarData();
   }, [getAllRoninAddress, getManagerSLP, getScholarSLP, scholarsRonin]);
 
-  let scholarsRonin = null;
   function getAllRoninAddress() {
     scholars.map((scholar) => {
       if (!scholarsRonin) {
