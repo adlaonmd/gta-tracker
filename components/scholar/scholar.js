@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/dist/client/router";
 import ScholarDetails from "../scholar-details/scholar-details";
 import styles from "./scholar.module.css";
 
@@ -59,6 +60,7 @@ function getScholarSLP(scholars, scholarData) {
 }
 
 export default function Scholar({ initialScholars }) {
+  const router = useRouter();
   const [scholars, setScholars] = useState(initialScholars);
   const [isLoading, setIsLoading] = useState(true);
   const [scholarData, setScholarData] = useState(null);
@@ -84,6 +86,10 @@ export default function Scholar({ initialScholars }) {
 
     fetchScholarData();
   }, [scholars]);
+
+  function refresh() {
+    router.reload();
+  }
 
   if (isLoading) {
     return <Loading />;
@@ -132,12 +138,21 @@ export default function Scholar({ initialScholars }) {
           id="scholar-list"
           className="px-8 pt-2 pb-8 border-2 border-solid rounded-xl bg-white"
         >
-          <div id="header" className="grid grid-cols-5 py-4">
+          <div
+            id="header"
+            className="grid grid-cols-5 py-4 relative items-center"
+          >
             <p className="font-bold text-purple-600">Name</p>
             <p className="font-bold text-purple-600">MMR</p>
             <p className="font-bold text-purple-600">Manager&apos;s %</p>
             <p className="font-bold text-purple-600">Scholar&apos;s %</p>
             <p className="font-bold text-purple-600">Total</p>
+            <button
+              className="absolute right-0 bg-purple-600 text-white hover:bg-purple-800 font-bold text-xs py-1 px-2 rounded-xl"
+              onClick={refresh}
+            >
+              Refresh
+            </button>
           </div>
           {scholars.map((scholar, key) => {
             return (
