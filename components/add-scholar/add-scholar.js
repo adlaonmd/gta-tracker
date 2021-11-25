@@ -28,17 +28,11 @@ export default function AddScholar() {
   }
 
   return (
-    <div>
-      <p>Add Scholar</p>
-      <form className="grid" onSubmit={addScholar}>
+    <div className="bg-white rounded-xl py-6 px-8 border-2 border-solid mb-4">
+      <p className="text-purple-600 font-bold mb-2">Add Scholar</p>
+      <form className="grid grid-cols-4 gap-4" onSubmit={addScholar}>
         <input
-          type="text"
-          required
-          placeholder="Ronin Address"
-          value={roninAddress}
-          onChange={(e) => setRoninAddress(e.target.value)}
-        />
-        <input
+          className="rounded-xl"
           type="text"
           required
           placeholder="Scholar Name"
@@ -46,6 +40,15 @@ export default function AddScholar() {
           onChange={(e) => setScholarName(e.target.value)}
         />
         <input
+          className="rounded-xl"
+          type="text"
+          required
+          placeholder="Ronin Address"
+          value={roninAddress}
+          onChange={(e) => setRoninAddress(e.target.value)}
+        />
+        <input
+          className="rounded-xl"
           type="number"
           required
           min="0"
@@ -54,7 +57,11 @@ export default function AddScholar() {
           value={managerPercentage}
           onChange={(e) => setManagerPercentage(e.target.value)}
         />
-        <input type="submit" value="Add Scholar" />
+        <input
+          className="rounded-xl bg-purple-600 text-white font-bold cursor-pointer hover:bg-purple-800"
+          type="submit"
+          value="Add Scholar"
+        />
       </form>
     </div>
   );

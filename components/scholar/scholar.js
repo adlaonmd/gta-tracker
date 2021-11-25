@@ -4,6 +4,7 @@ import styles from "./scholar.module.css";
 
 import utils from "../../lib/utils";
 import Loading from "../loading/loading";
+import AddScholar from "../add-scholar/add-scholar";
 
 export default function Scholar({ initialScholars }) {
   const [scholars, setScholars] = useState(initialScholars);
@@ -120,6 +121,9 @@ export default function Scholar({ initialScholars }) {
         </div>
       </div>
       <div className="bg-gray-100 py-8 px-4">
+        <div>
+          <AddScholar />
+        </div>
         <div
           id="scholar-list"
           className="px-8 pt-2 pb-8 border-2 border-solid rounded-xl bg-white"
