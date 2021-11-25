@@ -6,6 +6,58 @@ import utils from "../../lib/utils";
 import Loading from "../loading/loading";
 import AddScholar from "../add-scholar/add-scholar";
 
+let scholarsRonin = null;
+
+function getAllRoninAddress(scholars) {
+  scholars.map((scholar) => {
+    if (!scholarsRonin) {
+      return (scholarsRonin = scholar.ronin_address);
+    }
+    return (scholarsRonin = scholarsRonin.concat(",", scholar.ronin_address));
+  });
+}
+
+function getTotalSLP(scholarData) {
+  let totalSLP = 0;
+  for (let key in scholarData) {
+    totalSLP += scholarData[key].total_slp;
+  }
+
+  //setTotalSLP(totalSLP);
+  return totalSLP;
+}
+
+function getManagerSLP(scholars, scholarData) {
+  let i = 0;
+  let managerSLP = 0;
+  for (let key in scholarData) {
+    managerSLP +=
+      scholarData[key].total_slp * (scholars[i].manager_percentage / 100);
+    i++;
+  }
+
+  managerSLP = utils.toFixedIfNecessary(managerSLP, 2);
+
+  //setManagerSLP(managerSLP);
+  return managerSLP;
+}
+
+function getScholarSLP(scholars, scholarData) {
+  let i = 0;
+  let scholarSLP = 0;
+  for (let key in scholarData) {
+    scholarSLP +=
+      scholarData[key].total_slp *
+      ((100 - scholars[i].manager_percentage) / 100);
+    i++;
+  }
+
+  scholarSLP = utils.toFixedIfNecessary(scholarSLP, 2);
+
+  //setScholarSLP(scholarSLP);
+  return scholarSLP;
+}
+
 export default function Scholar({ initialScholars }) {
   const [scholars, setScholars] = useState(initialScholars);
   const [isLoading, setIsLoading] = useState(true);
@@ -14,10 +66,8 @@ export default function Scholar({ initialScholars }) {
   const [managerSLP, setManagerSLP] = useState(0);
   const [scholarSLP, setScholarSLP] = useState(0);
 
-  let scholarsRonin = null;
-
   useEffect(() => {
-    getAllRoninAddress();
+    getAllRoninAddress(scholars);
 
     async function fetchScholarData() {
       const response = await fetch(
@@ -27,60 +77,13 @@ export default function Scholar({ initialScholars }) {
       setScholarData(data);
       setIsLoading(false);
 
-      getTotalSLP(data);
-      getManagerSLP(data);
-      getScholarSLP(data);
+      setTotalSLP(getTotalSLP(data));
+      setManagerSLP(getManagerSLP(scholars, data));
+      setScholarSLP(getScholarSLP(scholars, data));
     }
 
     fetchScholarData();
-  }, [getAllRoninAddress, getManagerSLP, getScholarSLP, scholarsRonin]);
-
-  function getAllRoninAddress() {
-    scholars.map((scholar) => {
-      if (!scholarsRonin) {
-        return (scholarsRonin = scholar.ronin_address);
-      }
-      return (scholarsRonin = scholarsRonin.concat(",", scholar.ronin_address));
-    });
-  }
-
-  function getTotalSLP(scholarData) {
-    let totalSLP = 0;
-    for (let key in scholarData) {
-      totalSLP += scholarData[key].total_slp;
-    }
-
-    setTotalSLP(totalSLP);
-  }
-
-  function getManagerSLP(scholarData) {
-    let i = 0;
-    let managerSLP = 0;
-    for (let key in scholarData) {
-      managerSLP +=
-        scholarData[key].total_slp * (scholars[i].manager_percentage / 100);
-      i++;
-    }
-
-    managerSLP = utils.toFixedIfNecessary(managerSLP, 2);
-
-    setManagerSLP(managerSLP);
-  }
-
-  function getScholarSLP(scholarData) {
-    let i = 0;
-    let scholarSLP = 0;
-    for (let key in scholarData) {
-      scholarSLP +=
-        scholarData[key].total_slp *
-        ((100 - scholars[i].manager_percentage) / 100);
-      i++;
-    }
-
-    scholarSLP = utils.toFixedIfNecessary(scholarSLP, 2);
-
-    setScholarSLP(scholarSLP);
-  }
+  }, [scholars]);
 
   if (isLoading) {
     return <Loading />;
