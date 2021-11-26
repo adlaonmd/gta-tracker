@@ -13,13 +13,11 @@ export default async function handler(req, res) {
     }
 
     case "DELETE": {
-      const roninAddress = JSON.parse(req.body);
+      const scholarId = JSON.parse(req.body);
 
-      const removedScholar = await prisma.scholar.deleteMany({
+      const removedScholar = await prisma.scholar.delete({
         where: {
-          ronin_address: {
-            contains: roninAddress,
-          },
+          id: scholarId,
         },
       });
 

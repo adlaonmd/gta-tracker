@@ -1,6 +1,6 @@
 import { useRouter } from "next/dist/client/router";
 
-import utils from "../../lib/utils";
+import utils from "../lib/utils";
 
 export default function ScholarDetails({ scholar, scholarData }) {
   const router = useRouter();
@@ -9,7 +9,7 @@ export default function ScholarDetails({ scholar, scholarData }) {
     if (confirm("Are you sure you want to remove this scholar?")) {
       const response = await fetch("/api/scholars", {
         method: "DELETE",
-        body: JSON.stringify(scholar.ronin_address),
+        body: JSON.stringify(scholar.id),
       });
 
       if (response.status === 200) {

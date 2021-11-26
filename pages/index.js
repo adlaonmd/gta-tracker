@@ -1,4 +1,4 @@
-import Scholar from "../components/scholar/scholar";
+import ScholarList from "../components/ScholarList";
 
 import prisma from "../lib/prisma";
 
@@ -11,7 +11,7 @@ export async function getServerSideProps() {
 export default function Home({ initialScholars }) {
   return (
     <div>
-      <Scholar initialScholars={initialScholars} />
+      <ScholarList initialScholars={initialScholars} />
     </div>
   );
 }

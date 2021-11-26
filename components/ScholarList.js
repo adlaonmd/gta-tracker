@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/dist/client/router";
-import ScholarDetails from "../scholar-details/scholar-details";
-import styles from "./scholar.module.css";
+import ScholarItem from "./ScholarItem";
 
-import utils from "../../lib/utils";
-import Loading from "../loading/loading";
-import AddScholar from "../add-scholar/add-scholar";
+import utils from "../lib/utils";
+import Loading from "./Loading";
+import AddScholar from "./AddScholar";
 
 let scholarsRonin = null;
 
@@ -59,7 +58,7 @@ function getScholarSLP(scholars, scholarData) {
   return scholarSLP;
 }
 
-export default function Scholar({ initialScholars }) {
+export default function ScholarList({ initialScholars }) {
   const router = useRouter();
   const [scholars, setScholars] = useState(initialScholars);
   const [isLoading, setIsLoading] = useState(true);
@@ -101,28 +100,28 @@ export default function Scholar({ initialScholars }) {
         id="dashboard-summary"
         className="grid gap-4 grid-cols-4 px-4 py-8 bg-gradient-to-r from-purple-600 to-purple-800"
       >
-        <div id="total-slp" className={styles.card}>
+        <div id="total-slp" className="py-6 px-4 bg-white rounded-xl">
           <p className="text-md">Total SLP</p>
           <div className="flex justify-between px-4 items-center">
             <div className="font-bold text-4xl">{totalSLP}</div>
             <div className="text-4xl">💵</div>
           </div>
         </div>
-        <div id="manager-percentage" className={styles.card}>
+        <div id="manager-percentage" className="py-6 px-4 bg-white rounded-xl">
           <p className="text-md">Manager&apos;s SLP</p>
           <div className="flex justify-between px-4 items-center">
             <div className="font-bold text-4xl">{managerSLP}</div>
             <div className="text-4xl">💼</div>
           </div>
         </div>
-        <div id="scholar-percentage" className={styles.card}>
+        <div id="scholar-percentage" className="py-6 px-4 bg-white rounded-xl">
           <p className="text-md">Scholars&apos; SLP</p>
           <div className="flex justify-between px-4 items-center">
             <div className="font-bold text-4xl">{scholarSLP}</div>
             <div className="text-4xl">🎓</div>
           </div>
         </div>
-        <div id="total-scholars" className={styles.card}>
+        <div id="total-scholars" className="py-6 px-4 bg-white rounded-xl">
           <p className="text-md">Total Scholars</p>
           <div className="flex justify-between px-4 items-center">
             <div className="font-bold text-4xl">{scholars.length}</div>
@@ -131,9 +130,7 @@ export default function Scholar({ initialScholars }) {
         </div>
       </div>
       <div className="bg-gray-100 py-8 px-4">
-        <div>
-          <AddScholar />
-        </div>
+        <AddScholar />
         <div
           id="scholar-list"
           className="px-8 pt-2 pb-8 border-2 border-solid rounded-xl bg-white"
@@ -144,9 +141,9 @@ export default function Scholar({ initialScholars }) {
           >
             <p className="font-bold text-purple-600">Name</p>
             <p className="font-bold text-purple-600">MMR</p>
-            <p className="font-bold text-purple-600">Manager&apos;s %</p>
-            <p className="font-bold text-purple-600">Scholar&apos;s %</p>
-            <p className="font-bold text-purple-600">Total</p>
+            <p className="font-bold text-purple-600">Manager&apos;s SLP</p>
+            <p className="font-bold text-purple-600">Scholar&apos;s SLP</p>
+            <p className="font-bold text-purple-600">Total SLP</p>
             <button
               className="absolute right-0 bg-purple-600 text-white hover:bg-purple-800 font-bold text-xs py-1 px-2 rounded-xl"
               onClick={refresh}
@@ -156,7 +153,7 @@ export default function Scholar({ initialScholars }) {
           </div>
           {scholars.map((scholar, key) => {
             return (
-              <ScholarDetails
+              <ScholarItem
                 key={key}
                 scholar={scholar}
                 scholarData={

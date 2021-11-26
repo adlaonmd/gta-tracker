@@ -1,13 +1,12 @@
-import Footer from "./footer/footer";
-import Loading from "./loading/loading";
-import Navbar from "./navbar/navbar";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function Layout({ children }) {
   return (
     <>
-      <Navbar />
+      <Header></Header>
       <main className="w-full">{children}</main>
-      <Footer />
+      <Footer></Footer>
     </>
   );
 }
