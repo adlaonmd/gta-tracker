@@ -23,7 +23,7 @@ export default function ScholarDetails({ scholar, scholarData }) {
 
   return (
     <div className="grid grid-cols-5 items-center py-2 px-8 border-b border-solid relative hover:bg-gray-100">
-      <Link href={`/${encodeURIComponent(scholar.ronin_address)}`}>
+      <Link href={`/${scholar.ronin_address}`}>
         <a className="hover:text-purple-600">
           <p>{scholar.scholar_name}</p>
           <small>{scholarData.name}</small>
