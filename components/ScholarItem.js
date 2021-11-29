@@ -22,10 +22,10 @@ export default function ScholarDetails({ scholar, scholarData }) {
   }
 
   return (
-    <div className="grid grid-cols-5 items-center py-2 px-8 border-b border-solid relative hover:bg-gray-100">
+    <div className="grid grid-cols-5 items-center py-2 px-8 border-b border-solid relative hover:bg-gray-100 hover:text-purple-800">
       <Link href={`/${scholar.ronin_address}`}>
-        <a className="hover:text-purple-600">
-          <p>{scholar.scholar_name}</p>
+        <a>
+          <p className="font-bold leading-none">{scholar.scholar_name}</p>
           <small>{scholarData.name}</small>
         </a>
       </Link>
