@@ -12,7 +12,11 @@ export default function Overview({
         <p className="text-md">Total SLP</p>
         <div className="flex justify-between px-4 items-center">
           <div className="font-bold text-4xl">
-            {totalSLP ? totalSLP : <Loading size="40" />}
+            {totalSLP ? (
+              Number(totalSLP).toLocaleString()
+            ) : (
+              <Loading size="40" />
+            )}
           </div>
           <div className="text-4xl">💵</div>
         </div>
@@ -21,7 +25,11 @@ export default function Overview({
         <p className="text-md">Manager&apos;s SLP</p>
         <div className="flex justify-between px-4 items-center">
           <div className="font-bold text-4xl">
-            {managerSLP ? managerSLP : <Loading size="40" />}
+            {managerSLP ? (
+              Number(managerSLP).toLocaleString()
+            ) : (
+              <Loading size="40" />
+            )}
           </div>
           <div className="text-4xl">💼</div>
         </div>
@@ -30,7 +38,11 @@ export default function Overview({
         <p className="text-md">Scholars&apos; SLP</p>
         <div className="flex justify-between px-4 items-center">
           <div className="font-bold text-4xl">
-            {scholarSLP ? scholarSLP : <Loading size="40" />}
+            {scholarSLP ? (
+              Number(scholarSLP).toLocaleString()
+            ) : (
+              <Loading size="40" />
+            )}
           </div>
           <div className="text-4xl">🎓</div>
         </div>
@@ -38,7 +50,9 @@ export default function Overview({
       <div id="total-scholars" className="py-6 px-4 bg-white rounded-xl">
         <p className="text-md">Total Scholars</p>
         <div className="flex justify-between px-4 items-center">
-          <div className="font-bold text-4xl">{totalScholars}</div>
+          <div className="font-bold text-4xl">
+            {Number(totalScholars).toLocaleString()}
+          </div>
           <div className="text-4xl">👥</div>
         </div>
       </div>

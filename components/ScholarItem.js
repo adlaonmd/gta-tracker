@@ -30,20 +30,24 @@ export default function ScholarDetails({ scholar, scholarData }) {
         </a>
       </Link>
 
-      <p>{scholarData.mmr}</p>
+      <p>{Number(scholarData.mmr).toLocaleString()}</p>
       <p>
-        {utils.toFixedIfNecessary(
-          scholarData.total_slp * (scholar.manager_percentage / 100),
-          2
-        )}
+        {Number(
+          utils.toFixedIfNecessary(
+            scholarData.total_slp * (scholar.manager_percentage / 100),
+            2
+          )
+        ).toLocaleString()}
       </p>
       <p>
-        {utils.toFixedIfNecessary(
-          scholarData.total_slp * ((100 - scholar.manager_percentage) / 100),
-          2
-        )}
+        {Number(
+          utils.toFixedIfNecessary(
+            scholarData.total_slp * ((100 - scholar.manager_percentage) / 100),
+            2
+          )
+        ).toLocaleString()}
       </p>
-      <p>{scholarData.total_slp}</p>
+      <p>{Number(scholarData.total_slp).toLocaleString()}</p>
       <div className="absolute right-8">
         <button
           className="bg-red-400 rounded-md p-1 hover:bg-red-500"
