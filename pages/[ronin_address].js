@@ -5,8 +5,12 @@ export default function RoninAddress() {
   const { ronin_address } = router.query;
 
   return (
-    <div>
-      <p>Ronin Address: {ronin_address}</p>
+    <div className="text-center">
+      <h1 className="font-bold text-4xl">WIP</h1>
+      <p>
+        Ronin Address: <br />
+        {ronin_address}
+      </p>
     </div>
   );
 }
