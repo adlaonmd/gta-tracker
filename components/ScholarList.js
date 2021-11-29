@@ -133,11 +133,11 @@ export default function ScholarList({ initialScholars }) {
         <AddScholar />
         <div
           id="scholar-list"
-          className="px-8 pt-2 pb-8 border-2 border-solid rounded-xl bg-white"
+          className="pt-2 pb-8 border-2 border-solid rounded-xl bg-white"
         >
           <div
             id="header"
-            className="grid grid-cols-5 py-4 relative items-center"
+            className="grid grid-cols-5 py-4 px-8 relative items-center"
           >
             <p className="font-bold text-purple-600">Name</p>
             <p className="font-bold text-purple-600">MMR</p>
@@ -145,7 +145,7 @@ export default function ScholarList({ initialScholars }) {
             <p className="font-bold text-purple-600">Scholar&apos;s SLP</p>
             <p className="font-bold text-purple-600">Total SLP</p>
             <button
-              className="absolute right-0 bg-purple-600 text-white hover:bg-purple-800 font-bold text-xs py-1 px-2 rounded-xl"
+              className="absolute right-8 bg-purple-600 text-white hover:bg-purple-800 font-bold text-xs py-1 px-2 rounded-xl"
               onClick={refresh}
             >
               Refresh

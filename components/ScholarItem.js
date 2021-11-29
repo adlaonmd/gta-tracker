@@ -1,4 +1,5 @@
 import { useRouter } from "next/dist/client/router";
+import Link from "next/link";
 
 import utils from "../lib/utils";
 
@@ -21,11 +22,13 @@ export default function ScholarDetails({ scholar, scholarData }) {
   }
 
   return (
-    <div className="grid grid-cols-5 items-center py-2 border-b border-solid relative">
-      <div>
-        <p>{scholar.scholar_name}</p>
-        <small>{scholarData.name}</small>
-      </div>
+    <div className="grid grid-cols-5 items-center py-2 px-8 border-b border-solid relative hover:bg-gray-100">
+      <Link href={`/${encodeURIComponent(scholar.ronin_address)}`}>
+        <a className="hover:text-purple-600">
+          <p>{scholar.scholar_name}</p>
+          <small>{scholarData.name}</small>
+        </a>
+      </Link>
 
       <p>{scholarData.mmr}</p>
       <p>
@@ -41,7 +44,7 @@ export default function ScholarDetails({ scholar, scholarData }) {
         )}
       </p>
       <p>{scholarData.total_slp}</p>
-      <div className="absolute right-0">
+      <div className="absolute right-8">
         <button
           className="bg-red-400 rounded-md p-1 hover:bg-red-500"
           onClick={removeScholar}
