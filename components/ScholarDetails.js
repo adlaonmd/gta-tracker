@@ -49,7 +49,7 @@ export default function ScholarDetails({ scholar, scholarData }) {
           <p className="text-md">Scholar&apos;s SLP</p>
           <div className="flex justify-between px-4 items-center">
             <p className="font-bold text-4xl">
-              {scholar.scholar_percentage
+              {scholar.manager_percentage
                 ? Number(
                     utils.toFixedIfNecessary(
                       scholarData.total_slp *
