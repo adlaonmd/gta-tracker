@@ -81,7 +81,7 @@ export default function Home({ initialScholars }) {
   }, [scholars]);
 
   return (
-    <div>
+    <div id="home">
       <Overview
         totalSLP={totalSLP}
         managerSLP={managerSLP}

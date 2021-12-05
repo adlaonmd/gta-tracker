@@ -9,7 +9,7 @@ datasource db {
 
 model Scholar {
   id                 Int    @id @default(autoincrement())
-  ronin_address      String
+  ronin_address      String @unique
   scholar_name       String
   manager_percentage Int
 }

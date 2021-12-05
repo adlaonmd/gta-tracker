@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import utils from "../lib/utils";
 
-export default function ScholarDetails({ scholar, scholarData }) {
+export default function ScholarItem({ scholar, scholarData }) {
   const router = useRouter();
 
   async function removeScholar() {

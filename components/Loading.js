@@ -8,6 +8,7 @@ export default function Loading({ size }) {
         alt="Indicator"
         width={size}
         height={size}
+        priority={true}
       />
     </div>
   );

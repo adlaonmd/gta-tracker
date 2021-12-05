@@ -8,7 +8,10 @@ export default function Overview({
 }) {
   return (
     <div className="grid gap-4 grid-cols-4 px-4 py-8 bg-gradient-to-r from-purple-600 to-purple-800">
-      <div id="total-slp" className="py-6 px-4 bg-white rounded-xl">
+      <div
+        id="total-slp"
+        className="py-6 px-4 bg-white rounded-xl border-2 border-solid"
+      >
         <p className="text-md">Total SLP</p>
         <div className="flex justify-between px-4 items-center">
           <div className="font-bold text-4xl">
@@ -21,7 +24,10 @@ export default function Overview({
           <div className="text-4xl">💵</div>
         </div>
       </div>
-      <div id="manager-percentage" className="py-6 px-4 bg-white rounded-xl">
+      <div
+        id="manager-percentage"
+        className="py-6 px-4 bg-white rounded-xl border-2 border-solid"
+      >
         <p className="text-md">Manager&apos;s SLP</p>
         <div className="flex justify-between px-4 items-center">
           <div className="font-bold text-4xl">
@@ -34,7 +40,10 @@ export default function Overview({
           <div className="text-4xl">💼</div>
         </div>
       </div>
-      <div id="scholar-percentage" className="py-6 px-4 bg-white rounded-xl">
+      <div
+        id="scholar-percentage"
+        className="py-6 px-4 bg-white rounded-xl border-2 border-solid"
+      >
         <p className="text-md">Scholars&apos; SLP</p>
         <div className="flex justify-between px-4 items-center">
           <div className="font-bold text-4xl">
@@ -47,7 +56,10 @@ export default function Overview({
           <div className="text-4xl">🎓</div>
         </div>
       </div>
-      <div id="total-scholars" className="py-6 px-4 bg-white rounded-xl">
+      <div
+        id="total-scholars"
+        className="py-6 px-4 bg-white rounded-xl border-2 border-solid"
+      >
         <p className="text-md">Total Scholars</p>
         <div className="flex justify-between px-4 items-center">
           <div className="font-bold text-4xl">
