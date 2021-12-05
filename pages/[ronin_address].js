@@ -21,11 +21,17 @@ export default function Scholar({ scholar, scholarData, axies }) {
 export async function getServerSideProps(context) {
   const { ronin_address } = context.query;
 
-  const scholar = await prisma.scholar.findUnique({
+  let scholar = await prisma.scholar.findUnique({
     where: {
       ronin_address,
     },
   });
+
+  if (scholar === null) {
+    scholar = {
+      ronin_address,
+    };
+  }
 
   const scholarData = await fetch(
     `https://game-api.axie.technology/api/v1/${ronin_address}`

@@ -3,11 +3,11 @@ import Image from "next/image";
 export default function AxieItem({ axie }) {
   return (
     <div className="bg-white w-full max-w-sm rounded-xl p-4 border-2 border-solid">
-      <img
+      <Image
         src={axie.image}
         alt={axie.class}
-        width="256"
-        height="256"
+        width={256}
+        height={192}
         className="m-auto"
       />
       <p className="font-bold text-md">{axie.name}</p>
@@ -32,9 +32,9 @@ export default function AxieItem({ axie }) {
       </div>
       <hr />
       <div className="grid grid-cols-2 mt-4">
-        {axie.parts.map((part) => {
+        {axie.parts.map((part, key) => {
           return (
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 text-left" key={key}>
               <Image
                 src={`/axie-parts/${part.class.toLowerCase()}/${part.type.toLowerCase()}.svg`}
                 alt={part.type}
@@ -57,6 +57,7 @@ export default function AxieItem({ axie }) {
         <a
           href={`https://marketplace.axieinfinity.com/axie/${axie.id}`}
           target="_blank"
+          rel="noreferrer"
         >
           View Axie
         </a>
